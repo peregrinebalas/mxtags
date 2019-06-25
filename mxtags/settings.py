@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tag_engine'
 ]
 
 MIDDLEWARE = [
@@ -69,14 +70,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mxtags.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.instagram.InstagramOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgres',
-        'NAME': 'mxtags_dev_db'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mxtags_dev_db',
         'USER': 'postgres',
         'PASSWORD': '',
         'HOST': 'localhost',
